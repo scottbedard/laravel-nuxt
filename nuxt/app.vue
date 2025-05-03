@@ -41,6 +41,14 @@ const login = ref({
   password: 'password',
 })
 
+async function onLogin() {
+  await auth.login(login.value)
+}
+
+async function onLogout() {
+  await auth.logout()
+}
+
 async function onRegister() {
   await client('api/register', {
     method: 'POST',
@@ -48,13 +56,5 @@ async function onRegister() {
   })
 
   await auth.refreshIdentity()
-}
-
-async function onLogin() {
-  await auth.login(login.value)
-}
-
-async function onLogout() {
-  await auth.logout()
 }
 </script>
