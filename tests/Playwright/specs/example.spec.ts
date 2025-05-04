@@ -7,7 +7,7 @@ test.describe('example', () => {
     const user = await app.auth()
     
     const response = await page.goto('/')
-    const json = await response?.json()
+    const json = response?.json()
     const status = response?.status()
 
     console.log({ json, status, user })
