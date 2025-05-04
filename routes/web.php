@@ -11,3 +11,7 @@ Route::get('/health', function () {
 });
 
 require __DIR__.'/auth.php';
+
+if (config('app.env') === 'local') {
+    require __DIR__.'/playwright.php';
+}

@@ -22,7 +22,7 @@ export default class App {
    * Execute an artisan command
    */
   async artisan(command: string, parameters: Record<string, unknown> = {}) {
-    return await this.page.request.post('/__playwright__/artisan', {
+    return await this.page.request.post('http://localhost:80/__playwright__/artisan', {
       data: { _token: await this.csrfToken(), command, parameters },
       headers: { Accept: 'application/json' },
     })
@@ -49,7 +49,7 @@ export default class App {
    * Create a model
    */
   async create<T = any>(model: string, attributes: Record<string, unknown> = {}, options: CreateOptions = {}) {
-    const response = await this.page.request.post('/__playwright__/factory', {
+    const response = await this.page.request.post('http://localhost:80/__playwright__/factory', {
       data: {
         _token: await this.csrfToken(),
         attributes,
@@ -70,7 +70,7 @@ export default class App {
   async csrfToken(page?: Page) {
     const _page = page ?? this.page
 
-    const response = await _page.request.get('/__playwright__/csrf_token', {
+    const response = await _page.request.get('http://localhost:80/__playwright__/csrf_token', {
       headers: { Accept: 'application/json' },
     })
 
@@ -81,7 +81,7 @@ export default class App {
    * Get the current user
    */
   async currentUser() {
-    const response = await this.page.request.post('/__playwright__/current-user', {
+    const response = await this.page.request.post('http://localhost:80/__playwright__/current-user', {
       data: { _token: await this.csrfToken() },
       headers: { Accept: 'application/json' },
     })
@@ -98,11 +98,11 @@ export default class App {
   /**
    * Log in
    */
-  async login(attributes?: Record<string, unknown>, page?: Page) {
+  async login(attributes?: Partial<User>, page?: Page) {
     const _attributes = attributes ?? await this.user()
     const _page = page ?? this.page
 
-    const response = await _page.request.post('/__playwright__/login', {
+    const response = await _page.request.post('http://localhost:80/__playwright__/login', {
       data: { _token: await this.csrfToken(_page), attributes: _attributes },
       headers: { Accept: 'application/json' },
     })
@@ -116,7 +116,7 @@ export default class App {
   async logout(page?: Page) {
     const _page = page ?? this.page
 
-    const response = await _page.request.post('/__playwright__/logout', {
+    const response = await _page.request.post('http://localhost:80/__playwright__/logout', {
       data: { _token: await this.csrfToken() },
       headers: { Accept: 'application/json' },
     })
@@ -135,7 +135,7 @@ export default class App {
    * Execute arbirary PHP code
    */
   async php(command: string) {
-    const response = await this.page.request.post('/__playwright__/run-php', {
+    const response = await this.page.request.post('http://localhost:80/__playwright__/run-php', {
       data: { _token: await this.csrfToken(), command },
       headers: { Accept: 'application/json' },
     })
