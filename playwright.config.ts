@@ -9,7 +9,7 @@ export default defineConfig({
   testDir: './tests/Playwright',
   tsconfig: './tsconfig.json',
   use: {
-    baseURL: process.env.APP_URL ?? 'http://localhost:3000',
+    baseURL: process.env.FRONTEND_URL ?? 'http://localhost:3000',
     trace: 'on-first-retry',
   },
   workers: 1,
