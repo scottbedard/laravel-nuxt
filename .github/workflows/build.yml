@@ -104,10 +104,10 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     env:
-      APP_URL: "http://127.0.0.1:80"
+      APP_URL: "http://127.0.0.1:8000"
       DB_CONNECTION: pgsql
       DB_DATABASE: testing
-      DB_HOST: 127.0.0.1:80
+      DB_HOST: 127.0.0.1
       DB_PASSWORD: password
       DB_PORT: 55432
       DB_USERNAME: root
