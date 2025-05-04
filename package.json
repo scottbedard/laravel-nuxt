@@ -14,6 +14,7 @@
     "@tailwindcss/vite": "^4.1.5",
     "axios": "^1.8.2",
     "concurrently": "^9.0.1",
+    "dotenv": "^16.5.0",
     "nuxt": "^3.17.0",
     "nuxt-auth-sanctum": "0.6.6",
     "tailwindcss": "^4.1.5",
