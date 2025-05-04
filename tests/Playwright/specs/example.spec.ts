@@ -6,6 +6,8 @@ test.describe('example', () => {
 
     const user = await app.auth()
 
+    console.log({ user })
+
     await page.goto('/')
     
     await expect(page).toHaveTitle('laravel-nuxt')
