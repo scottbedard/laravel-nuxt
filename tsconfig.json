@@ -1,4 +1,10 @@
 {
   // https://nuxt.com/docs/guide/concepts/typescript
+  "compilerOptions": {
+    "paths": {
+      "playwright/*": ["./tests/Playwright/*"],
+      "types/*": ["./nuxt/types/*"]
+    }
+  },
   "extends": "./.nuxt/tsconfig.json"
 }
