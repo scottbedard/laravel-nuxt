@@ -10,8 +10,5 @@ export default defineNuxtConfig({
   modules: [
     'nuxt-auth-sanctum',
   ],
-  sanctum: {
-    baseUrl: 'http://localhost:80',
-  },
   srcDir: 'nuxt',
 })
