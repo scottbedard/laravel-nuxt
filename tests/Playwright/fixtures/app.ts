@@ -12,11 +12,7 @@ function timestamp(date: Date) {
 }
 
 function url(path: string) {
-  const result = `${process.env.NUXT_PUBLIC_SANCTUM_BASE_URL ?? 'http://localhost:8000'}/${path}`
-
-  console.log({ env: process.env.NUXT_PUBLIC_SANCTUM_BASE_URL, result })
-
-  return result
+  return `${process.env.NUXT_PUBLIC_SANCTUM_BASE_URL}/api/${path}`
 }
 
 export default class App {

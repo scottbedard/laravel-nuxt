@@ -2,12 +2,13 @@ import { expect, test } from 'playwright/index'
 
 test.describe('example', () => {
   test('home page', async ({ app, page }) => {
-    const user = await app.auth()
+    await app.refreshDatabase()
 
-    console.log({ user })
+    const user = await app.auth()
 
     await page.goto('/')
     
     await expect(page).toHaveTitle('laravel-nuxt')
+    await expect(page.getByTestId('user')).toContainText(user.email)
   })
 })
