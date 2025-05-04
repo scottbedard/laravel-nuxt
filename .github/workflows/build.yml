@@ -157,10 +157,11 @@ jobs:
       - name: Install Playwright
         run: npx playwright install --with-deps
 
-      - name: Serve application
-        run: |
-          php artisan serve > /dev/null 2>&1 &
-          pnpm preview > /dev/null 2>&1 &
+      - name: Serve backend
+        run: php artisan serve > /dev/null 2>&1 &
+
+      - name: Serve frontend
+        run: pnpm preview > /dev/null 2>&1 &
 
       - name: Playwright
         run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --trace=retain-on-failure --project=chromium
