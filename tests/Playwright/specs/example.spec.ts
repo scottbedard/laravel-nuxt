@@ -14,7 +14,6 @@ test.describe('example', () => {
     fs.writeFileSync('response-text.artifact', text ?? 'empty')
 
     console.log({ text, status, user })
-
     
     await expect(page).toHaveTitle('laravel-nuxt')
     await expect(page.getByTestId('user')).toContainText(user.email)
