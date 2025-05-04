@@ -5,10 +5,12 @@ test.describe('example', () => {
     await app.refreshDatabase()
 
     const user = await app.auth()
+    
+    const response = await page.goto('/')
+    const status = response?.status()
 
-    console.log({ user })
+    console.log({ status, user })
 
-    await page.goto('/')
     
     await expect(page).toHaveTitle('laravel-nuxt')
     await expect(page.getByTestId('user')).toContainText(user.email)
