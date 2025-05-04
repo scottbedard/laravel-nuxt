@@ -3,7 +3,7 @@
     <div v-if="user">
       <h1 class="font-semibold tracking-wide">Current user</h1>
 
-      <pre class="my-3 text-sm">{{ user }}</pre>
+      <pre class="my-3 text-sm" data-testid="user">{{ user }}</pre>
 
       <button
         type="button"
@@ -82,6 +82,8 @@
 </template>
 
 <script lang="ts" setup>
+import type { User } from 'types/index'
+
 useHead({
   title: 'laravel-nuxt',
   bodyAttrs: {
@@ -93,7 +95,7 @@ const auth = useSanctumAuth();
 
 const client = useSanctumClient();
 
-const user = useSanctumUser();
+const user = useSanctumUser<User>();
 
 const register = ref({
   email: 'alice@example.com',

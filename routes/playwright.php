@@ -1,6 +1,6 @@
 <?php
 
-use App\Playwright\Http\Controllers\PlaywrightController;
+use App\Http\Controllers\PlaywrightController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('__playwright__')

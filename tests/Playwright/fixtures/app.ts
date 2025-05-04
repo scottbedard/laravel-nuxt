@@ -12,7 +12,7 @@ function timestamp(date: Date) {
 }
 
 function url(path: string) {
-  return `${process.env.APP_URL ?? 'http://localhost:8000'}/${path}`
+  return `${process.env.APP_URL}/api/${path}`
 }
 
 export default class App {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Playwright\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
-class PlaywrightController
+class PlaywrightController extends Controller
 {
     /**
      * Artisan
