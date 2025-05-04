@@ -1,5 +1,5 @@
 import { expect, test } from 'playwright/index'
-import { fs } from 'node:fs'
+import fs from 'node:fs'
 
 test.describe('example', () => {
   test('home page', async ({ app, page }) => {
@@ -11,7 +11,7 @@ test.describe('example', () => {
     const text = await response?.text()
     const status = response?.status()
 
-    fs.writeFileSync('response-text.artifact', text)
+    fs.writeFileSync('response-text.artifact', text ?? 'empty')
 
     console.log({ text, status, user })
 
