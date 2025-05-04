@@ -12,7 +12,7 @@ function timestamp(date: Date) {
 }
 
 function url(path: string) {
-  return `http://localhost:8000/api/${path}`
+  return `${process.env.PLAYWRIGHT_API_URL ?? 'http://localhost:80/api'}/${path}`
 }
 
 export default class App {
