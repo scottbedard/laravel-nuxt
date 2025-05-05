@@ -6,7 +6,6 @@
       {
         'cursor-pointer': !disabled,
 
-        /* variants */
         'bg-slate-800 text-white hover:bg-slate-700': variant === 'primary',
 
         'border-gray-200 hover:border-gray-300': variant === 'secondary',
@@ -27,11 +26,12 @@ import { NuxtLink } from '#components'
 withDefaults(
   defineProps<{
     disabled?: boolean
-    to?: any
+    to?: string
     variant?: 'ghost' | 'secondary' | 'primary'
   }>(),
   {
     disabled: false,
+    to: undefined,
     variant: 'primary',
   }
 )

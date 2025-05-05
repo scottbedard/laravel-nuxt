@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   modules: [
+    '@nuxt/eslint',
     'nuxt-auth-sanctum',
   ],
   srcDir: 'nuxt',

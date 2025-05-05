@@ -52,7 +52,7 @@ export default class App {
   /**
    * Create a model
    */
-  async create<T = any>(model: string, attributes: Record<string, unknown> = {}, options: CreateOptions = {}) {
+  async create<T = unknown>(model: string, attributes: Record<string, unknown> = {}, options: CreateOptions = {}) {
     const response = await this.page.request.post(url('__playwright__/factory'), {
       data: {
         _token: await this.csrfToken(),
