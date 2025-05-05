@@ -26,6 +26,10 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  middleware: ['sanctum:guest'],
+})
+
 const auth = useSanctumAuth()
 
 const form = ref({
