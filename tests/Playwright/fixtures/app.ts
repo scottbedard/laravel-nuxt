@@ -1,5 +1,5 @@
 import type { Page } from '@playwright/test'
-import type { User } from 'types/index'
+import type { User } from '@/types'
 
 interface CreateOptions {
   count?: number

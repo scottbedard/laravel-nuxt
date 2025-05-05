@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
+  <!-- <div>
     <div v-if="user">
       <h1 class="font-semibold tracking-wide">Current user</h1>
 
@@ -78,7 +81,7 @@
         </div>
       </form>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script lang="ts" setup>
@@ -87,20 +90,14 @@ import type { User } from 'types/index'
 useHead({
   title: 'laravel-nuxt',
   bodyAttrs: {
-    class: 'antialiased p-6',
+    class: 'antialiased h-full',
   },
+  htmlAttrs: {
+    class: 'h-full',
+  }
 })
 
 const auth = useSanctumAuth();
-
-const client = useSanctumClient();
-
-const user = useSanctumUser<User>();
-
-const register = ref({
-  email: 'alice@example.com',
-  password: 'password',
-})
 
 const login = ref({
   email: 'alice@example.com',
@@ -113,14 +110,5 @@ async function onLogin() {
 
 async function onLogout() {
   await auth.logout()
-}
-
-async function onRegister() {
-  await client('api/register', {
-    method: 'POST',
-    body: register.value,
-  })
-
-  await auth.refreshIdentity()
 }
 </script>
