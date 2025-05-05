@@ -1,6 +1,6 @@
 <template>
   <div>
-    <pre>{{ { user } }}</pre>
+    <pre class="text-sm" data-testid="user">{{ { user } }}</pre>
   </div>
 </template>
 
