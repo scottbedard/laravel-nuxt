@@ -1,4 +1,4 @@
-import { expect, test } from  '#playwright/index'
+import { expect, test } from '#playwright/index'
 
 test.describe('example', () => {
   test('home page', async ({ app, page }) => {

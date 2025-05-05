@@ -12,6 +12,6 @@ useHead({
   },
   htmlAttrs: {
     class: 'h-full',
-  }
+  },
 })
 </script>
