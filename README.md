@@ -71,3 +71,5 @@ pnpm build
 # preview production
 pnpm preview
 ```
+
+Authentication is provided by [Laravel Sanctum](https://laravel.com/docs/12.x/sanctum), and users [`nuxt-auth-sanctum`](https://manchenkoff.gitbook.io/nuxt-auth-sanctum) to manage authentication. If you plan to use cookie-based authentication, api and client applications must be on the same host.
