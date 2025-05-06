@@ -9,7 +9,7 @@
 <a href="https://laravel.com/docs/12.x/license" target="__blank"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" /></a>
 </p>
 
-## [`laravel-nuxt`](https://laravel-nuxt.dev)
+## [`laravel-nuxt.dev`](https://laravel-nuxt.dev)
 
 A highly oppinionated starting point that brings together the following tools.
 
