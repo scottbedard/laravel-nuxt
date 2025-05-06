@@ -1,3 +1,6 @@
+import { fileURLToPath } from 'url'
+import tailwindcss from '@tailwindcss/vite'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   alias: {
@@ -5,7 +8,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   css: [
-    // '@/assets/css/tailwind.css',
+    '@/assets/css/tailwind.css',
   ],
   devtools: {
     enabled: true,
@@ -15,11 +18,11 @@ export default defineNuxtConfig({
   },
   modules: [
     // '@nuxt/eslint',
-    // 'nuxt-auth-sanctum',
+    'nuxt-auth-sanctum',
   ],
   vite: {
     plugins: [
-      // tailwindcss()
+      tailwindcss()
     ],
   },
 })
