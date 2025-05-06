@@ -21,9 +21,11 @@ A highly oppinionated starting point that brings together the following tools.
 
 More documentation to come.
 
-## Application layer
+## Application
 
-The API layer is a Laravel Sail application. You should https://laravel.com/docs/12.x/sail#configuring-a-shell-alias.
+The `api` directory contains a https://laravel.com/docs/11.x/sail#main-content application. You should https://laravel.com/docs/12.x/sail#configuring-a-shell-alias.
+
+[See here to install the api &rarr;](https://laravel.com/docs/12.x/sail#installing-sail-into-existing-applications)
 
 The following can be used to deploy to [Laravel Cloud](https://cloud.laravel.com/).
 Hopefully this is temporary, [an official API is in the works](https://cloud.laravel.com/docs/knowledge-base/monorepo-support).
@@ -48,4 +50,26 @@ rm -rf /tmp/monorepo_tmp
 
 # Deploy application
 composer install --no-dev
+```
+
+## Client
+
+The `client` directory contains a [Nuxt](https://nuxt.com/) application, and it's
+required to install the following
+
+- [Node.js](https://nodejs.org/)
+- [PNPM](https://pnpm.io/)
+
+```sh
+# install dependencies
+pnpm init
+
+# start dev server
+pnpm dev
+
+# build assets
+pnpm build
+
+# preview production
+pnpm preview
 ```
