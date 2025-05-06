@@ -60,7 +60,7 @@ your machine.
 
 ```sh
 # install dependencies
-pnpm init
+pnpm install
 
 # start dev server
 pnpm dev
