@@ -1,5 +1,25 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  alias: {
+    // '#playwright/*': fileURLToPath(new URL('./tests/Playwright', import.meta.url)),
+  },
   compatibilityDate: '2024-11-01',
-  devtools: { enabled: true }
+  css: [
+    // '@/assets/css/tailwind.css',
+  ],
+  devtools: {
+    enabled: true,
+  },
+  future: {
+    compatibilityVersion: 4,
+  },
+  modules: [
+    // '@nuxt/eslint',
+    // 'nuxt-auth-sanctum',
+  ],
+  vite: {
+    plugins: [
+      // tailwindcss()
+    ],
+  },
 })
