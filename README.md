@@ -21,9 +21,11 @@ A highly oppinionated starting point that brings together the following tools.
 
 More documentation to come.
 
-## Deployment
+## Application layer
 
-The following can be used to deploy an api using [Laravel Cloud](https://cloud.laravel.com/).
+The API layer is a Laravel Sail application. You should https://laravel.com/docs/12.x/sail#configuring-a-shell-alias.
+
+The following can be used to deploy to [Laravel Cloud](https://cloud.laravel.com/).
 Hopefully this is temporary, [an official API is in the works](https://cloud.laravel.com/docs/knowledge-base/monorepo-support).
 
 ```sh
