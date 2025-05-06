@@ -55,10 +55,8 @@ composer install --no-dev
 ## Client
 
 The `client` directory contains a [Nuxt](https://nuxt.com/) application, and it's
-required to install the following
-
-- [Node.js](https://nodejs.org/)
-- [PNPM](https://pnpm.io/)
+required to have [Node.js](https://nodejs.org/) and [PNPM](https://pnpm.io/) on
+your machine.
 
 ```sh
 # install dependencies
