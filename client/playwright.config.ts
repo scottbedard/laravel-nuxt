@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 // full paths are used because this IDE is likely has the entire monorepo open,
 // doing this ensures editors can find the .env file
 dotenv.config({
-  path: fileURLToPath(new URL('.env', import.meta.url))
+  path: fileURLToPath(new URL('.env', import.meta.url)),
 })
 
 // https://playwright.dev/docs/test-configuration

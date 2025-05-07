@@ -17,12 +17,12 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   modules: [
-    // '@nuxt/eslint',
+    '@nuxt/eslint',
     'nuxt-auth-sanctum',
   ],
   vite: {
     plugins: [
-      tailwindcss()
+      tailwindcss(),
     ],
   },
 })
