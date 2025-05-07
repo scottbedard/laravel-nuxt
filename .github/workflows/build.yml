@@ -1,0 +1,188 @@
+name: build
+
+on: [push]
+
+jobs:
+  #
+  # build
+  #
+  build:
+    runs-on: ubuntu-latest
+    services:
+      postgres-service:
+        image: postgres:17
+        env:
+          POSTGRES_DB: testing
+          POSTGRES_PASSWORD: password
+          POSTGRES_USER: root
+        ports:
+          - 55432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      APP_URL: "http://127.0.0.1:8000"
+      BROADCAST_CONNECTION: log
+      DB_CONNECTION: pgsql
+      DB_DATABASE: testing
+      DB_HOST: 127.0.0.1
+      DB_PASSWORD: password
+      DB_PORT: 55432
+      DB_USERNAME: root
+      E2E_TESTING: true
+      GITHUB_ACTION: true
+      LARAVEL_BYPASS_ENV_CHECK: 1
+      MAIL_MAILER: log
+      REVERB_HOST: 127.0.0.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.13.0
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          run_install: false
+          version: 9
+
+      - name: Configure directories
+        run: |
+          cd api
+          mv .env.example .env
+          chmod -R 777 ./storage ./bootstrap/cache
+
+      - name: PNPM install
+        run: |
+          cd api
+          pnpm install
+
+      - name: Composer install
+        run: |
+          cd api
+          composer install
+
+      - name: Generate application key
+        run: |
+          cd api
+          php artisan key:generate
+
+      - name: Pint
+        run: |
+          cd api
+          ./vendor/bin/pint --test
+
+      - name: Run migrations
+        run: |
+          cd api
+          php artisan migrate
+
+      - name: Pest
+        run: |
+          cd api
+          php artisan test
+
+  # #
+  # # playwright
+  # #
+  # playwright:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       shardIndex: [1] # [1, 2, 3, 4]
+  #       shardTotal: [1] # [4]
+  #   services:
+  #     postgres-service:
+  #       image: postgres:17
+  #       env:
+  #         POSTGRES_DB: testing
+  #         POSTGRES_PASSWORD: password
+  #         POSTGRES_USER: root
+  #       ports:
+  #         - 55432:5432
+  #       options: >-
+  #         --health-cmd pg_isready
+  #         --health-interval 10s
+  #         --health-timeout 5s
+  #         --health-retries 5
+  #   env:
+  #     APP_URL: "http://localhost:8000"
+  #     DB_CONNECTION: pgsql
+  #     DB_DATABASE: testing
+  #     DB_HOST: 127.0.0.1
+  #     DB_PASSWORD: password
+  #     DB_PORT: 55432
+  #     DB_USERNAME: root
+  #     E2E_TESTING: true
+  #     GITHUB_ACTION: true
+  #     MAIL_MAILER: log
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+
+  #     - name: Setup PHP
+  #       uses: shivammathur/setup-php@v2
+  #       with:
+  #         php-version: '8.4'
+
+  #     - name: Setup Node
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 22.13.0
+
+  #     - name: Setup PNPM
+  #       uses: pnpm/action-setup@v3
+  #       with:
+  #         run_install: false
+  #         version: 9
+
+  #     - name: Configure directories
+  #       run: |
+  #         mv .env.example .env
+  #         chmod -R 777 ./storage ./bootstrap/cache
+
+  #     - name: PNPM install
+  #       run: pnpm install
+
+  #     - name: Build Frontend
+  #       run: pnpm run build
+      
+  #     - name: Composer install
+  #       run: composer install
+
+  #     - name: Generate application key
+  #       run: php artisan key:generate
+
+  #     - name: Run migrations
+  #       run: php artisan migrate
+
+  #     - name: Install Playwright
+  #       run: npx playwright install --with-deps
+
+  #     - name: Start Laravel
+  #       run: php artisan serve > /dev/null 2>&1 &
+
+  #     - name: Start Nuxt
+  #       run: pnpm preview > /dev/null 2>&1 &
+
+  #     - name: Playwright
+  #       run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --trace=retain-on-failure --project=chromium
+
+  #     - name: Upload artifacts
+  #       if: ${{ !cancelled() }}
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: blob-report-${{ matrix.shardIndex }}
+  #         path: blob-report
+  #         retention-days: 1
