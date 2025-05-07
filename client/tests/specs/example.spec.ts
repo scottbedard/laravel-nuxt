@@ -6,7 +6,9 @@ test.describe('example', () => {
 
     await page.goto('/')
 
-    console.log({ user })
+    // Log the page body's innerHTML
+    const bodyHTML = await page.evaluate(() => document.body.innerHTML)
+    console.log('Page body innerHTML:', bodyHTML)
 
     await expect(page.getByTestId('user')).toContainText(user.email)
   })
