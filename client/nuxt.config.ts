@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   alias: {
-    // '#playwright/*': fileURLToPath(new URL('./tests/Playwright', import.meta.url)),
+    '#tests/*': fileURLToPath(new URL('./tests', import.meta.url)),
   },
   compatibilityDate: '2024-11-01',
   css: [
