@@ -3,6 +3,14 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
+test('artisan', function () {
+    $response = $this->post('/api/__playwright__/artisan', [
+        'command' => 'inspire',
+    ]);
+
+    expect($response->status())->toEqual(200);
+});
+
 test('csrf token', function () {
     $response = $this->get('/api/__playwright__/csrf-token');
 
