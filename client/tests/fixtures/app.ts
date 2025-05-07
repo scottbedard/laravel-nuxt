@@ -12,6 +12,7 @@ function timestamp(date: Date) {
 }
 
 function url(path: string) {
+  console.log('url', process.env.APP_URL, `${process.env.APP_URL}/api/${path}`)
   return `${process.env.APP_URL}/api/${path}`
 }
 
