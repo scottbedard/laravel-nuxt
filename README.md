@@ -9,7 +9,7 @@
 <a href="https://laravel.com/docs/12.x/license" target="__blank"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" /></a>
 </p>
 
-## [`laravel-nuxt`](https://laravel-nuxt.dev)
+## [`laravel-nuxt.dev`](https://laravel-nuxt.dev)
 
 A highly oppinionated starting point that brings together the following tools.
 
@@ -23,9 +23,9 @@ More documentation to come.
 
 ## Application
 
-The `api` directory contains a https://laravel.com/docs/11.x/sail#main-content application. You should https://laravel.com/docs/12.x/sail#configuring-a-shell-alias.
+The `api` directory contains a [Laravel Sail](https://laravel.com/docs/11.x/sail#main-content) application. You should [configure a shell alias](https://laravel.com/docs/12.x/sail#configuring-a-shell-alias).
 
-[See here to install the api &rarr;](https://laravel.com/docs/12.x/sail#installing-sail-into-existing-applications)
+[See how to install the api &rarr;](https://laravel.com/docs/12.x/sail#installing-sail-into-existing-applications)
 
 The following can be used to deploy to [Laravel Cloud](https://cloud.laravel.com/).
 Hopefully this is temporary, [an official API is in the works](https://cloud.laravel.com/docs/knowledge-base/monorepo-support).
@@ -60,7 +60,7 @@ your machine.
 
 ```sh
 # install dependencies
-pnpm init
+pnpm install
 
 # start dev server
 pnpm dev
@@ -72,4 +72,4 @@ pnpm build
 pnpm preview
 ```
 
-Authentication is provided by [Laravel Sanctum](https://laravel.com/docs/12.x/sanctum), and users [`nuxt-auth-sanctum`](https://manchenkoff.gitbook.io/nuxt-auth-sanctum) to manage authentication. If you plan to use cookie-based authentication, api and client applications must be on the same host.
+Authentication is provided by [Laravel Sanctum](https://laravel.com/docs/12.x/sanctum), and users [`nuxt-auth-sanctum`](https://manchenkoff.gitbook.io/nuxt-auth-sanctum) to manage cookies and CSRF protection. If you plan to use cookie-based authentication, the API and client applications must be on the same host.
