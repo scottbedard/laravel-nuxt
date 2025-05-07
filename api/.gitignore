@@ -11,7 +11,7 @@
 /.vscode
 /.zed
 /auth.json
-/coverage
+/coverage.xml
 /node_modules
 /public/build
 /public/hot
