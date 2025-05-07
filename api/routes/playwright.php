@@ -23,7 +23,7 @@ Route::prefix('__playwright__')
         Route::post('run-php', [PlaywrightController::class, 'runPhp'])
             ->name('playwright.run-php');
 
-        Route::get('csrf_token', [PlaywrightController::class, 'csrfToken'])
+        Route::get('csrf-token', [PlaywrightController::class, 'csrfToken'])
             ->name('playwright.csrf-token');
 
         Route::post('routes', [PlaywrightController::class, 'routes'])

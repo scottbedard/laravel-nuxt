@@ -74,7 +74,7 @@ export default class App {
   async csrfToken(page?: Page) {
     const _page = page ?? this.page
 
-    const response = await _page.request.get(url('__playwright__/csrf_token'), {
+    const response = await _page.request.get(url('__playwright__/csrf-token'), {
       headers: { Accept: 'application/json' },
     })
 

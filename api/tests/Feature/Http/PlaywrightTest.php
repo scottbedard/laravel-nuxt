@@ -4,12 +4,26 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 test('csrf token', function () {
-    $response = $this->get('/api/__playwright__/csrf_token');
+    $response = $this->get('/api/__playwright__/csrf-token');
 
     expect($response->json())->toEqual(csrf_token());
 });
 
-test('login / logout', function () {
+test('current user', function () {
+    $alice = User::factory()->create();
+
+    Auth::login($alice);
+
+    $response =$this->post('/api/__playwright__/current-user');
+
+    expect($response->json('id'))->toEqual($alice->id);
+});
+
+test('login', function () {
+    $this->post('/api/__playwright__/login');
+
+    expect(Auth::check())->toBeTrue();
+
     $alice = User::factory()->create();
 
     $this->post('/api/__playwright__/login', [
@@ -19,6 +33,12 @@ test('login / logout', function () {
     ]);
 
     expect(Auth::id())->toEqual($alice->id);
+});
+
+test('logout', function () {
+    $alice = User::factory()->create();
+
+    Auth::login($alice);
 
     $this->post('/api/__playwright__/logout');
 
@@ -26,9 +46,19 @@ test('login / logout', function () {
 });
 
 test('run php', function () {
-    $response = $this->post('/api/__playwright__/run-php', [
-        'command' => 'return 12345;',
+    $res1 = $this->post('/api/__playwright__/run-php', [
+        'command' => 'return 123;',
     ]);
 
-    expect($response->json('result'))->toEqual(12345);
+    $res2 = $this->post('/api/__playwright__/run-php', [
+        'command' => 'return 456',
+    ]);
+
+    $res3 = $this->post('/api/__playwright__/run-php', [
+        'command' => '789;',
+    ]);
+
+    expect($res1->json('result'))->toEqual(123);
+    expect($res2->json('result'))->toEqual(456);
+    expect($res3->json('result'))->toEqual(789);
 });
