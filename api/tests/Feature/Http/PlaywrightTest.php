@@ -14,9 +14,21 @@ test('current user', function () {
 
     Auth::login($alice);
 
-    $response =$this->post('/api/__playwright__/current-user');
+    $response = $this->post('/api/__playwright__/current-user');
 
     expect($response->json('id'))->toEqual($alice->id);
+});
+
+test('factory', function () {
+    $response = $this->post('/api/__playwright__/factory', [
+        '_token' => csrf_token(),
+        'model' => User::class,
+        'attributes' => [
+            'email' => 'alice@example.com',
+        ],
+    ]);
+
+    expect($response->json('email'))->toEqual('alice@example.com');
 });
 
 test('login', function () {
