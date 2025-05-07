@@ -11,9 +11,9 @@
 
 ## [`laravel-nuxt.dev`](https://laravel-nuxt.dev)
 
-Welcome, to a highly oppinionated starting for [Laravel](https://laravel.com/) / [Nuxt](https://nuxt.com/) applications. Among many, here are just some of the other notable tools...
+Welcome, to a highly oppinionated starting for [Laravel](https://laravel.com/) / [Nuxt](https://nuxt.com/) applications. Other notable tools include,
 
-- [Tailwind](https://tailwindcss.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
 - [Playwright](https://playwright.dev/)
 - [Pest](https://pestphp.com/)
 - [Docker Desktop](https://www.docker.com/)
