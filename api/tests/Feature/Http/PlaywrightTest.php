@@ -9,7 +9,7 @@ test('csrf token', function () {
     expect($response->json())->toEqual(csrf_token());
 });
 
-test('login', function () {
+test('login / logout', function () {
     $alice = User::factory()->create();
 
     $this->post('/api/__playwright__/login', [
@@ -19,6 +19,10 @@ test('login', function () {
     ]);
 
     expect(Auth::id())->toEqual($alice->id);
+
+    $this->post('/api/__playwright__/logout');
+
+    expect(Auth::check())->toBeFalse();
 });
 
 test('run php', function () {
