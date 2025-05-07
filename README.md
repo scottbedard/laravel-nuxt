@@ -11,13 +11,12 @@
 
 ## [`laravel-nuxt.dev`](https://laravel-nuxt.dev)
 
-A highly oppinionated starting point that brings together the following tools.
+Welcome, to a highly oppinionated starting for [Laravel](https://laravel.com/) / [Nuxt](https://nuxt.com/) applications. Among many, here are just some of the other notable tools...
 
-- [Laravel](https://laravel.com/)
-- [Nuxt](https://nuxt.com/)
 - [Tailwind](https://tailwindcss.com/)
 - [Playwright](https://playwright.dev/)
-- [ESLint](https://eslint.org/)
+- [Pest](https://pestphp.com/)
+- [Docker Desktop](https://www.docker.com/)
 
 More documentation to come.
 
