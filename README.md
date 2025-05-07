@@ -5,6 +5,7 @@
 
 <p align="center">
 <a href="https://github.com/scottbedard/laravel-nuxt/actions/workflows/build.yml" target="__blank"><img src="https://github.com/scottbedard/laravel-nuxt/actions/workflows/build.yml/badge.svg" alt="Build status"></a>
+<a href="https://codecov.io/gh/scottbedard/laravel-nuxt"><img src="https://codecov.io/gh/scottbedard/laravel-nuxt/branch/monorepo/graph/badge.svg?token=weroiw630X" alt="Test coverage"></a>
 <a href="https://laravel-nuxt.dev" target="__blank"><img src="https://img.shields.io/badge/demo-laravel--nuxt.dev-blue" alt="Demo application"></a>
 <a href="https://laravel.com/docs/12.x/license" target="__blank"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" /></a>
 </p>
