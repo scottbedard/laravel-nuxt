@@ -90,7 +90,7 @@ jobs:
       - name: Pest
         run: |
           cd api
-          php artisan test --coverage-html=coverage
+          php artisan test --coverage-clover=coverage.xml
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
