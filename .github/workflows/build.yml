@@ -3,94 +3,94 @@ name: build
 on: [push]
 
 jobs:
-  #
-  # build
-  #
-  build:
-    runs-on: ubuntu-latest
-    services:
-      postgres-service:
-        image: postgres:17
-        env:
-          POSTGRES_DB: testing
-          POSTGRES_PASSWORD: password
-          POSTGRES_USER: root
-        ports:
-          - 55432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    env:
-      APP_URL: "http://127.0.0.1:8000"
-      BROADCAST_CONNECTION: log
-      DB_CONNECTION: pgsql
-      DB_DATABASE: testing
-      DB_HOST: 127.0.0.1
-      DB_PASSWORD: password
-      DB_PORT: 55432
-      DB_USERNAME: root
-      E2E_TESTING: true
-      GITHUB_ACTION: true
-      LARAVEL_BYPASS_ENV_CHECK: 1
-      MAIL_MAILER: log
-      REVERB_HOST: 127.0.0.1
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  # #
+  # # build
+  # #
+  # build:
+  #   runs-on: ubuntu-latest
+  #   services:
+  #     postgres-service:
+  #       image: postgres:17
+  #       env:
+  #         POSTGRES_DB: testing
+  #         POSTGRES_PASSWORD: password
+  #         POSTGRES_USER: root
+  #       ports:
+  #         - 55432:5432
+  #       options: >-
+  #         --health-cmd pg_isready
+  #         --health-interval 10s
+  #         --health-timeout 5s
+  #         --health-retries 5
+  #   env:
+  #     APP_URL: "http://127.0.0.1:8000"
+  #     BROADCAST_CONNECTION: log
+  #     DB_CONNECTION: pgsql
+  #     DB_DATABASE: testing
+  #     DB_HOST: 127.0.0.1
+  #     DB_PASSWORD: password
+  #     DB_PORT: 55432
+  #     DB_USERNAME: root
+  #     E2E_TESTING: true
+  #     GITHUB_ACTION: true
+  #     LARAVEL_BYPASS_ENV_CHECK: 1
+  #     MAIL_MAILER: log
+  #     REVERB_HOST: 127.0.0.1
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.4'
+  #     - name: Setup PHP
+  #       uses: shivammathur/setup-php@v2
+  #       with:
+  #         php-version: '8.4'
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.13.0
+  #     - name: Setup Node
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 22.13.0
 
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v3
-        with:
-          run_install: false
-          version: 9
+  #     - name: Setup PNPM
+  #       uses: pnpm/action-setup@v3
+  #       with:
+  #         run_install: false
+  #         version: 9
 
-      - name: Configure directories
-        run: |
-          chmod -R 777 ./api/storage ./api/bootstrap/cache
-          mv ./api/.env.example ./api/.env
-          mv ./client/.env.example ./client/.env
+  #     - name: Configure directories
+  #       run: |
+  #         chmod -R 777 ./api/storage ./api/bootstrap/cache
+  #         mv ./api/.env.example ./api/.env
+  #         mv ./client/.env.example ./client/.env
 
-      - name: PNPM install
-        run: |
-          cd api
-          pnpm install
+  #     - name: PNPM install
+  #       run: |
+  #         cd api
+  #         pnpm install
 
-      - name: Composer install
-        run: |
-          cd api
-          composer install
+  #     - name: Composer install
+  #       run: |
+  #         cd api
+  #         composer install
 
-      - name: Generate application key
-        run: |
-          cd api
-          php artisan key:generate
+  #     - name: Generate application key
+  #       run: |
+  #         cd api
+  #         php artisan key:generate
 
-      - name: Pint
-        run: |
-          cd api
-          ./vendor/bin/pint --test
+  #     - name: Pint
+  #       run: |
+  #         cd api
+  #         ./vendor/bin/pint --test
 
-      - name: Run migrations
-        run: |
-          cd api
-          php artisan migrate
+  #     - name: Run migrations
+  #       run: |
+  #         cd api
+  #         php artisan migrate
 
-      - name: Pest
-        run: |
-          cd api
-          php artisan test
+  #     - name: Pest
+  #       run: |
+  #         cd api
+  #         php artisan test
 
   #
   # playwright

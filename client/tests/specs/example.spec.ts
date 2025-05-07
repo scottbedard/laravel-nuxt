@@ -6,6 +6,8 @@ test.describe('example', () => {
 
     await page.goto('/')
 
+    console.log({ user })
+
     await expect(page.getByTestId('user')).toContainText(user.email)
   })
 })
