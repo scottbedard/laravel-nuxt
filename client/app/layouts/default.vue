@@ -15,9 +15,9 @@
         <div
           v-if="user"
           class="flex items-center gap-x-12 text-sm">
-          <div class="flex gap-x-2 items-center text-gray-500">
-            <div class="bg-gray-100 flex items-center justify-center rounded-full w-8 h-8 text-gray-500">
-              <svg class="w-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <div class="flex gap-x-2 items-center text-gray-800">
+            <div class="bg-gray-100 flex items-center justify-center rounded-full w-7 h-7 text-gray-500">
+              <svg class="w-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
 
                 <circle cx="12" cy="7" r="4" />
@@ -28,8 +28,15 @@
           </div>
 
           <button
-            class="cursor-pointer text-gray-500 hover:text-gray-700"
+            class="cursor-pointer flex items-center gap-x-2 text-gray-700 hover:text-gray-900"
             @click="logout">
+            <svg class="w-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+
+              <polyline points="16 17 21 12 16 7" />
+
+              <line x1="21" x2="9" y1="12" y2="12" />
+            </svg>
             Log out
           </button>
         </div>

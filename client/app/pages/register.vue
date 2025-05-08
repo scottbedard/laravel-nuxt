@@ -35,7 +35,7 @@ definePageMeta({
   middleware: ['sanctum:guest'],
 })
 
-const auth = useSanctumAuth()
+const { refreshIdentity } = useAuth()
 
 const client = useSanctumClient()
 
@@ -55,7 +55,7 @@ async function onSubmit() {
       body: form.value,
     })
 
-    await auth.refreshIdentity()
+    await refreshIdentity()
 
     await navigateTo('/')
   } catch (error) {

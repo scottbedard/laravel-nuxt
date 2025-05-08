@@ -38,7 +38,7 @@ definePageMeta({
   middleware: ['sanctum:guest'],
 })
 
-const auth = useSanctumAuth()
+const { login } = useAuth()
 
 const form = ref({
   email: 'alice@example.com',
@@ -51,7 +51,7 @@ async function onSubmit() {
   loading.value = true
 
   try {
-    await auth.login(form.value)
+    await login(form.value)
 
     await navigateTo('/')
   } catch (error) {
