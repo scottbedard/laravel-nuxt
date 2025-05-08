@@ -3,7 +3,12 @@
     <h1 class="text-2xl font-bold text-center">Register</h1>
 
     <form
-      class="gap-6 grid max-w-sm mx-auto w-full"
+      :class="[
+        'gap-6 grid max-w-sm mx-auto w-full',
+        {
+          'opacity-50 pointer-events-none': loading,
+        }
+      ]"
       @submit.prevent="onSubmit">
       <Input
         v-model="form.email"
@@ -39,14 +44,24 @@ const form = ref({
   password: 'password',
 })
 
+const loading = ref(false)
+
 async function onSubmit() {
-  await client('api/register', {
-    method: 'POST',
-    body: form.value,
-  })
+  loading.value = true
 
-  await auth.refreshIdentity()
+  try {
+    await client('api/register', {
+      method: 'POST',
+      body: form.value,
+    })
 
-  await navigateTo('/')
+    await auth.refreshIdentity()
+
+    await navigateTo('/')
+  } catch (error) {
+    console.error(error)
+  } finally {
+    loading.value = false
+  }
 }
 </script>
