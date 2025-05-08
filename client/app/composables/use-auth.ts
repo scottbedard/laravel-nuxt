@@ -6,6 +6,8 @@ export function useAuth() {
   const user = useSanctumUser<User>()
 
   return {
+    init: auth.init,
+    isAuthenticated: auth.isAuthenticated,
     login: auth.login,
     logout: auth.logout,
     refreshIdentity: auth.refreshIdentity,
