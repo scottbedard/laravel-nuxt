@@ -58,26 +58,45 @@ jobs:
 
       - name: Configure directories
         run: |
-          mv .env.example .env
-          chmod -R 777 ./storage ./bootstrap/cache
+          chmod -R 777 ./api/storage ./api/bootstrap/cache
+          mv ./api/.env.example ./api/.env
+          mv ./client/.env.example ./client/.env
 
       - name: PNPM install
-        run: pnpm install
+        run: |
+          cd api
+          pnpm install
 
       - name: Composer install
-        run: composer install
+        run: |
+          cd api
+          composer install
 
       - name: Generate application key
-        run: php artisan key:generate
+        run: |
+          cd api
+          php artisan key:generate
 
       - name: Pint
-        run: ./vendor/bin/pint --test
+        run: |
+          cd api
+          ./vendor/bin/pint --test
 
       - name: Run migrations
-        run: php artisan migrate
+        run: |
+          cd api
+          php artisan migrate
 
       - name: Pest
-        run: php artisan test
+        run: |
+          cd api
+          php artisan test --coverage-clover=coverage.xml
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
 
   #
   # playwright
@@ -104,7 +123,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     env:
-      APP_URL: "http://localhost:8000"
+      APP_URL: http://localhost:8000
       DB_CONNECTION: pgsql
       DB_DATABASE: testing
       DB_HOST: 127.0.0.1
@@ -114,6 +133,7 @@ jobs:
       E2E_TESTING: true
       GITHUB_ACTION: true
       MAIL_MAILER: log
+      NUXT_PUBLIC_SANCTUM_BASE_URL: http://localhost:8000
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -136,35 +156,54 @@ jobs:
 
       - name: Configure directories
         run: |
-          mv .env.example .env
-          chmod -R 777 ./storage ./bootstrap/cache
+          chmod -R 777 ./api/storage ./api/bootstrap/cache
+          mv ./api/.env.example ./api/.env
+          mv ./client/.env.example ./client/.env
 
       - name: PNPM install
-        run: pnpm install
+        run: |
+          cd client
+          pnpm install
 
       - name: Build Frontend
-        run: pnpm run build
+        run: |
+          cd client
+          pnpm run build
       
       - name: Composer install
-        run: composer install
+        run: |
+          cd api
+          composer install
 
       - name: Generate application key
-        run: php artisan key:generate
+        run: |
+          cd api
+          php artisan key:generate
 
       - name: Run migrations
-        run: php artisan migrate
+        run: |
+          cd api
+          php artisan migrate
 
       - name: Install Playwright
-        run: npx playwright install --with-deps
+        run: |
+          cd client
+          npx playwright install --with-deps
 
       - name: Start Laravel
-        run: php artisan serve > /dev/null 2>&1 &
+        run: |
+          cd api
+          php artisan serve > /dev/null 2>&1 &
 
       - name: Start Nuxt
-        run: pnpm preview > /dev/null 2>&1 &
+        run: |
+          cd client
+          pnpm preview > /dev/null 2>&1 &
 
       - name: Playwright
-        run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --trace=retain-on-failure --project=chromium
+        run: |
+          cd client
+          npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --trace=retain-on-failure --project=chromium
 
       - name: Upload artifacts
         if: ${{ !cancelled() }}
