@@ -21,7 +21,7 @@ Welcome, to a highly oppinionated starting for [Laravel](https://laravel.com/) /
 
 More documentation to come.
 
-## Application
+### Application
 
 The `api` directory contains a [Laravel Sail](https://laravel.com/docs/11.x/sail#main-content) application. You should [configure a shell alias](https://laravel.com/docs/12.x/sail#configuring-a-shell-alias).
 
@@ -52,7 +52,18 @@ rm -rf /tmp/monorepo_tmp
 composer install --no-dev
 ```
 
-## Client
+### Database
+
+This starter kit uses [PostgreSQL](https://www.postgresql.org/) for optimal compatibility with [Laravel Cloud](https://cloud.laravel.com/). Because of this, [applications can utilize hybernation mode](https://cloud.laravel.com/docs/compute#hibernation) with no additional configuration. The docker configuration will also start a [pgAdmin](https://www.pgadmin.org/) server at port `5050`. To sign in, use the following credentials.
+
+```
+Host name / address: pgsql
+Port: 5432
+Username: sail
+Password: password
+```
+
+### Client
 
 The `client` directory contains a [Nuxt](https://nuxt.com/) application, and it's
 required to have [Node.js](https://nodejs.org/) and [PNPM](https://pnpm.io/) on
