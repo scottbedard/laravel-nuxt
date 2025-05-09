@@ -13,17 +13,20 @@
       <Input
         v-model="form.email"
         autofocus
+        data-testid="email"
         label="Email"
         type="email"
         :disabled="loading" />
 
       <Input
         v-model="form.password"
+        data-testid="password"
         label="Password"
         type="password"
         :disabled="loading" />
 
       <Button
+        data-testid="submit"
         type="submit"
         variant="primary"
         :disabled="loading">
