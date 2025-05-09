@@ -1,13 +1,9 @@
 <template>
-  <div class="max-w-7xl mx-auto p-6">
-    <div class="flex items-center justify-between">
+  <div class="max-w-7xl mx-auto p-6 text-sm">
+    <div class="border-b border-gray-200 flex items-center justify-between pb-6">
       <NuxtLink
-        class="cursor-pointer flex gap-x-2 group items-center"
+        class="cursor-pointer flex gap-x-2 items-center text-gray-800 hover:text-blue-500"
         to="/">
-        <svg class="w-5 group-hover:text-blue-500" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-
-        <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>
-
         laravel-nuxt.dev
       </NuxtLink>
 
@@ -28,7 +24,7 @@
           </div>
 
           <button
-            class="cursor-pointer flex items-center gap-x-2 text-gray-700 hover:text-gray-900"
+            class="cursor-pointer flex items-center gap-x-2 text-gray-800 hover:text-blue-500"
             @click="logout">
             <svg class="w-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
@@ -41,19 +37,23 @@
           </button>
         </div>
 
-        <template v-else>
-          <Button
+        <div
+          v-else
+          class="flex gap-x-12 text-sm">
+          <NuxtLink
+            class="text-gray-800 hover:text-blue-500"
             to="/login"
             variant="ghost">
             Log in
-        </Button>
+          </NuxtLink>
 
-        <Button
+          <NuxtLink
+            class="text-gray-800 hover:text-blue-500"
             to="/register"
             variant="secondary">
             Register
-          </Button>
-        </template>
+          </NuxtLink>
+        </div>
       </div>
     </div>
 
