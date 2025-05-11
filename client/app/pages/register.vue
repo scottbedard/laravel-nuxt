@@ -13,15 +13,18 @@
       <Input
         v-model="form.email"
         autofocus
+        data-testid="email"
         label="Email"
         type="email" />
 
       <Input
         v-model="form.password"
+        data-testid="password"
         label="Password"
         type="password" />
 
       <Button
+        data-testid="submit"
         type="submit"
         variant="primary">
         Register
@@ -50,7 +53,7 @@ async function onSubmit() {
   loading.value = true
 
   try {
-    await client('api/register', {
+    await client('register', {
       method: 'POST',
       body: form.value,
     })
