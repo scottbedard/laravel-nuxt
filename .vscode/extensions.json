@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "emeraldwalk.RunOnSave",
+    "junstyle.php-cs-fixer",
+    "laravel.vscode-laravel",
+    "Vue.volar"
+  ]
+}

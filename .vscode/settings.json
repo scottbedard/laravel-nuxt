@@ -3,13 +3,26 @@
     "editor.tabSize": 2
   },
   "[php]": {
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    }
   },
   "[rust]": {
     "editor.tabSize": 4
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "cmd": "cd api && ./vendor/bin/pint ${file}",
+        "match": "\\.php$"
+      }
+    ]
   },
   "eslint.useFlatConfig": true
 }
