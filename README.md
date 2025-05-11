@@ -84,3 +84,11 @@ pnpm preview
 ```
 
 Authentication is provided by [Laravel Sanctum](https://laravel.com/docs/12.x/sanctum), and users [`nuxt-auth-sanctum`](https://manchenkoff.gitbook.io/nuxt-auth-sanctum) to manage cookies and CSRF protection. If you plan to use cookie-based authentication, the API and client applications must be on the same host.
+
+### Code style
+
+This project uses [Laravel Pint](https://laravel.com/docs/12.x/pint) and [ESLint](https://eslint.org/) to maintain code quality and style. 
+
+To define your PHP code style, edit `api/pint.json`, [available rules can be found here](https://mlocati.github.io/php-cs-fixer-configurator). TypeScript / Vue rules are defined in `client/eslint.config.mjs`, and available rules can be found [here](https://eslint.org/docs/latest/rules/) and [here](https://eslint.style/).
+
+
