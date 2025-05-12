@@ -2,7 +2,6 @@ import { expect, test } from '#tests/index'
 
 test.describe('auth', () => {
   test('log in and out', async ({ app, page }) => {
-    await app.logout()
     const user = await app.user()
 
     await app.goto('/login')

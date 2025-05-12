@@ -44,7 +44,7 @@ definePageMeta({
 const { login } = useAuth()
 
 const form = ref({
-  email: 'alice@example.com',
+  email: 'test@example.com',
   password: 'password',
 })
 

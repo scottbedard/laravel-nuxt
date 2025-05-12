@@ -20,7 +20,11 @@
               </svg>
             </div>
 
-            <span v-text="user.email" />
+            <NuxtLink
+              class="text-gray-800 hover:text-blue-500"
+              to="/settings/account">
+              {{ user.email }}
+            </NuxtLink>
           </div>
 
           <button
