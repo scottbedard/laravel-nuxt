@@ -100,6 +100,15 @@ export default class App {
   }
 
   /**
+   * Go to a page and wait for hydration to finish
+   */
+  async goto(path: string) {
+    await this.page.goto(path)
+
+    await this.page.waitForFunction(() => window.useNuxtApp?.()?.isHydrating === false)
+  }
+
+  /**
    * Log in
    */
   async login(attributes?: Partial<User>, page?: Page) {

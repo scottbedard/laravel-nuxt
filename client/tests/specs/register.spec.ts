@@ -6,8 +6,7 @@ test.describe('register', () => {
     const email = faker.internet.email()
 
     await app.logout()
-    await page.goto('/register')
-    await page.waitForLoadState('networkidle')
+    await app.goto('/register')
     await page.getByTestId('email').fill(email)
     await page.getByTestId('password').fill('password')
     await page.getByTestId('submit').click()
