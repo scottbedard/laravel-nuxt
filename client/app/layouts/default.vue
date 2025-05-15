@@ -47,6 +47,7 @@
           class="flex gap-x-12 text-sm">
           <NuxtLink
             class="text-gray-800 hover:text-blue-500"
+            data-testid="login-link"
             to="/login"
             variant="ghost">
             Log in
@@ -54,6 +55,7 @@
 
           <NuxtLink
             class="text-gray-800 hover:text-blue-500"
+            data-testid="register-link"
             to="/register"
             variant="secondary">
             Register

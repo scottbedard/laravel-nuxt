@@ -22,7 +22,7 @@
         v-model="form.password"
         data-testid="password"
         label="Password"
-        type="password"
+        type="text"
         :disabled="loading" />
 
       <Button
@@ -44,8 +44,8 @@ definePageMeta({
 const { login } = useAuth()
 
 const form = ref({
-  email: 'test@example.com',
-  password: 'password',
+  email: '',
+  password: '',
 })
 
 const loading = ref(false)
@@ -54,7 +54,9 @@ async function onSubmit() {
   loading.value = true
 
   try {
-    await login(form.value)
+    const res1 = await login(form.value)
+
+    console.log({ res1 })
 
     await navigateTo('/')
   } catch (error) {

@@ -20,6 +20,12 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     'nuxt-auth-sanctum',
   ],
+  pages: {
+    pattern: [
+      '**/*.vue',
+      '!**/partials/**',
+    ],
+  },
   vite: {
     plugins: [
       tailwindcss(),

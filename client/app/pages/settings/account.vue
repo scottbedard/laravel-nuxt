@@ -1,10 +1,12 @@
 <template>
   <div>
-    <h1 class="text-2xl">Change password</h1>
+    <PasswordForm />
   </div>
 </template>
 
 <script lang="ts" setup>
+import PasswordForm from './partials/PasswordForm.vue'
+
 definePageMeta({
   middleware: ['sanctum:auth'],
 })
